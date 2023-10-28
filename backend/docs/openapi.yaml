@@ -22,26 +22,6 @@ paths:
           description: Aucune transaction n'a été trouvée pour le mois en cours
         "500":
           description: Erreur serveur
-    post:
-      summary: Ajouter une nouvelle transaction
-      description: Permet d'ajouter une nouvelle transaction
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TransactionInput"
-      responses:
-        "200":
-          description: Transaction ajoutée avec succès
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TransactionOutput"
-        "400":
-          description: Requête invalide
-        "500":
-          description: Erreur serveur
 
   /transactions/{transactionId}:
     get:
@@ -63,6 +43,28 @@ paths:
                 $ref: "#/components/schemas/TransactionDetails"
         "404":
           description: Transaction non trouvée
+        "500":
+          description: Erreur serveur
+
+  /transactions/add:
+    post:
+      summary: Ajouter une nouvelle transaction
+      description: Permet d'ajouter une nouvelle transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionInput"
+      responses:
+        "200":
+          description: Transaction ajoutée avec succès
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionOutput"
+        "400":
+          description: Requête invalide
         "500":
           description: Erreur serveur
 
@@ -144,10 +146,8 @@ components:
         accountId:
           type: string
           description: ID du compte associé à la transaction
-        category:
-          type: string
-        notes:
-          type: string
+        amount:
+          type: number
           description: Montant de la transaction
         description:
           type: string
@@ -161,10 +161,9 @@ components:
         accountId:
           type: string
           description: ID du compte associé à la transaction
-        category:
-          type: string
-        notes:
-          type: string
+        amount:
+          type: number
+          description: Montant de la transaction
         description:
           type: string
           description: Description de la transaction
