@@ -105,11 +105,14 @@ function Profil() {
 
             {!showEditButton && (
               <div className="container-profil-button">
-                <button className="edit-button" onClick={updateProfileUser}>
+                <button
+                  className="edit-button save-button"
+                  onClick={updateProfileUser}
+                >
                   Save
                 </button>
                 <button
-                  className="edit-button"
+                  className="edit-button cancel-button"
                   onClick={() => toggleEditButton(true)}
                 >
                   Cancel

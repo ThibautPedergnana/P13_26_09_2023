@@ -32,7 +32,7 @@ paths:
             schema:
               $ref: "#/components/schemas/TransactionInput"
       responses:
-        "200":
+        "201":
           description: Transaction ajoutée avec succès
           content:
             application/json:
@@ -66,7 +66,6 @@ paths:
         "500":
           description: Erreur serveur
 
-  /transactions/update/{transactionId}:
     put:
       summary: Mettre à jour les informations d'une transaction existante
       description: Met à jour les informations d'une transaction existante en fonction de l'ID de transaction fourni
@@ -95,7 +94,6 @@ paths:
         "500":
           description: Erreur serveur
 
-  /transactions/delete/{transactionId}:
     delete:
       summary: Supprimer une transaction
       description: Supprime une transaction en fonction de l'ID de transaction fourni
@@ -107,7 +105,7 @@ paths:
           schema:
             type: string
       responses:
-        "200":
+        "204":
           description: Transaction supprimée avec succès
         "404":
           description: Transaction non trouvée
